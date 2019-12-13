@@ -1,0 +1,145 @@
+@import url("./areweyet/common.css");
+
+html.dashboard #table-container {
+  font-size: 12px;
+}
+
+html.dashboard #grid {
+  align-items: center;
+}
+
+.embed-only {
+  display: none;
+}
+html.embed .embed-only {
+  display: unset;
+}
+
+html.dashboard .hide-dashboard {
+  display: none !important;
+}
+
+html.embed .full-only {
+  display: none;
+}
+html:not(.embed) body {
+  min-width: 800px;
+}
+
+a,
+html.embed a:visited {
+  color: var(--blue-40);
+}
+
+.iframe-container {
+  width: 50%;
+}
+.iframe-container > div {
+  height: 0;
+  padding-bottom: 50%;
+  position: relative;
+}
+.iframe-container > div > iframe {
+  border: none;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display: block;
+}
+
+#footer {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+}
+
+#grid h1 {
+  grid-area: header;
+  justify-self: stretch;
+}
+
+#links {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+#grid {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: minmax(500px, 1fr) auto;
+  grid-template-areas:
+    "header header"
+    "graph sidebar";
+  grid-gap: 5px;
+  justify-items: center;
+}
+
+html.embed #grid {
+  grid-template-columns: 1fr auto;
+  overflow: hidden;
+}
+
+#component-specific-tests {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 400px;
+
+  /* Add some padding based on the width so the graph doesn't get too vertical */
+  /*
+  box-sizing: border-box;
+  padding-top: 10%;
+  */
+  grid-area: graph;
+}
+
+#table-container {
+  grid-area: sidebar;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--main-background);
+}
+
+html.dashboard #table-container {
+  /* Match the 400px on graph */
+  height: 325px;
+  margin-bottom: 75px;
+  overflow: hidden;
+}
+html.dashboard #table-container input {
+  display: none;
+}
+html.dashboard #table-container a {
+  display: inline-block;
+  text-overflow: ellipsis;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 3px;
+  vertical-align: bottom;
+}
+
+
+/* @media (max-width: 800px) {
+  #table-container {
+    width: 100px;
+  }
+} */
+
+.filters {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#table .swatch {
+  width: 20px;
+  display: inline-block;
+  margin-right: 3px;
+  user-select: none;
+  cursor: pointer;
+}
