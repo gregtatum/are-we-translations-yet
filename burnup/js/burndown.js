@@ -1,6 +1,7 @@
 /* This is a modified version of https://github.com/cpeterso/cpeterso.github.io, based
    on loading https://cpeterso.github.io/burndown/?since=2019-11-18&f1=blocked&o1=anywords&v1=1467214
 */
+
 ;((exports) => {
     "use strict";
 
@@ -170,7 +171,7 @@
             let bugListURL = `https://bugzilla.mozilla.org/buglist.cgi?bug_id=`;
 
             for (let bug of bugs) {
-                let openDate = yyyy_mm_dd(bug.reportedAt);
+                let openDate = yyyy_mm_dd(bug.creationTime);
                 if (openDate < chartStartDate) {
                     openDate = chartStartDate;
                 }
@@ -183,8 +184,7 @@
                     bugList.appendChild(bugRow);
                     bugListURL += `${bug.id},`;
                 } else {
-                    // XXX pretend last change time is time of resolution
-                    let closedDate = yyyy_mm_dd(bug.lastModifiedAt);
+                    let closedDate = yyyy_mm_dd(bug.resolutionTime);
                     if (closedDate < chartStartDate) {
                         closedDate = chartStartDate;
                     }
@@ -216,7 +216,7 @@
 
             // Extend last bug count to today, so burndown ends on today.
             const today = yyyy_mm_dd(new Date());
-            if (bugDates.length > 0 && bugDates[bugDates.length - 1] < today) {
+            if (bugDates.length > 0 && _.last(bugDates) < today) {
                 bugDates.push(today);
                 openBugCounts.push(openBugCount);
                 closedBugCounts.push(closedBugCount);
@@ -228,6 +228,6 @@
 
     searchAndPlotBugs();
 
-    // const title = queryString.split("&").join(", ");
-    // document.title = `Burning up: ${title}`;
+    const title = queryString.split("&").join(", ");
+    document.title = `Burning up: ${title}`;
 })(this);
