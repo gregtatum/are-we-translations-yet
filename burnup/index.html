@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Fission nsDocShellTreeItem Burndown</title>
+    <title>Burndown</title>
     <link href='../static/common.css' rel='stylesheet' type='text/css'>
     <script src='../static/areweyet/chart.js'></script>
 
@@ -20,14 +20,19 @@
     }
     #bugs {
         margin-bottom: 2em;
+        line-height: 2;
+        font-size: 0.8em;
     }
     .open-bugzilla {
         line-height: 5em;
     }
+    body {
+      font-family: "Fira Sans", sans-serif;
+    }
     </style>
     <script>
       window.CHART_START_DATE = "2019-11-18";
-      window.CHART_QUERY_STRING = "f1=blocked&o1=anywords&v1=1467214";
+      window.CHART_QUERY_STRING = "f1=blocked&o1=anywords&v1=1686965";
     </script>
 
     <!-- C3/D3 -->
