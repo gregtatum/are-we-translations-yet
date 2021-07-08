@@ -7,50 +7,95 @@
     <script src='static/areweyet/chart.js'></script>
 </head>
 <body>
-  <h1>Are We Unified Intl Yet? <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1686965">Metabug</a></h1>
-  <div id="links" hidden="true">
-    <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1686965">Metabug</a>
-    |
-    <a href="./">Home</a>
-  </div>
+  <h1>Are We Unified Intl Yet?</h1>
 
-  <div  style="width: 70%" class="iframe-container">
-    <div>
-        <iframe src="./burnup/?since=2019-11-18&f1=blocked&o1=anywords&v1=1686965"></iframe>
+  <div class="milestones">
+    <div class="desc-box-outer">
+      <div class="desc-box">
+        <h2>All work for mozilla::intl</h2>
+        <p>
+          The unicode components are used in a variety of ways across all of the browser.
+          Unifying them will make the internationalization experience in Firefox consistent,
+          mitigate risks for maintaining new web APIs, and allow for experimentation with
+          next generation internationalization tools.
+        </p>
+        <p>
+          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1686965">Metabug</a>
+        </p>
+      </div>
+    </div>
+
+    <div style="width: 70%" class="iframe-container">
+      <div>
+        <iframe src="./burnup/?f1=blocked&o1=anywords&v1=1686965"></iframe>
+      </div>
     </div>
   </div>
 
   <div class="milestones">
-    <div class="desc-box">
-      <h2>Milestone 1</h2>
-      <p>
-        Description
-      </p>
+    <div class="desc-box-outer">
+      <div class="desc-box">
+        <h2>Unifying Gecko</h2>
+        <p>
+          In order to lower the maintenance burden, we should ensure all calls to ICU
+          are routed through mozilla::intl. This chart tracks that unification. This
+          does not include SpiderMonkey work.
+        </p>
+        <p>
+          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1719664">Metabug</a>
+        </p>
+      </div>
     </div>
-    <div class="desc-box">
-      <h2>Milestone 2</h2>
-      <p>
-        Description
-      </p>
+
+    <div style="width: 70%" class="iframe-container">
+      <div>
+          <iframe src="./burnup/?f1=blocked&o1=anywords&v1=1719664"></iframe>
+      </div>
     </div>
-    <div class="desc-box">
-      <h2>Milestone 3</h2>
-      <p>
-        Description
-      </p>
+  </div>
+
+  <div class="milestones">
+    <div class="desc-box-outer">
+      <div class="desc-box">
+        <h2>Unifying SpiderMonkey</h2>
+        <p>
+          SpiderMonkey is the most complicated consumer of ICU code, and it has the
+          largest amount of future changes around the Intl API. It's a key part of
+          testing and validating Mozilla's involvement with and validation of
+          <a href="https://github.com/unicode-org/icu4x">ICU4X</a>.
+        </p>
+        <p>
+          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1719672">Metabug</a>
+        </p>
+      </div>
+    </div>
+
+    <div style="width: 70%" class="iframe-container">
+      <div>
+          <iframe src="./burnup/?f1=blocked&o1=anywords&v1=1719672"></iframe>
+      </div>
     </div>
   </div>
 
   <div class="summary-box">
+    <hr />
     <p>
-      <strong>Are We Unified Intl Yet</strong> is a template site for sharing updates to Mozilla projects.
+      <strong>Are We * Yet</strong> is a template site for sharing updates to Mozilla projects.
       <ul>
-        <li>A list of all "are we yet" project sites is kept at <a href="https://wiki.mozilla.org/Areweyet">https://wiki.mozilla.org/Areweyet</a></li>
-        <li>The source for this projet can be found at <a href="https://github.com/bgrins/areweyet">https://github.com/bgrins/areweyet</a></li>
-        <li>A "burnup chart" tool for Bugzilla can be found at <a href="./burnup">burnup/</a></li>
+        <li>
+          The source for this project can be found at
+          <a href="https://github.com/gregtatum/are-we-unified-intl-yet/">github.com/gregtatum/are-we-unified-intl-yet/</a>.
+        </li>
+        <li>
+          This site was forked from
+          <a href="https://github.com/bgrins/areweyet">github.com/bgrins/areweyet</a>
+        </li>
+        <li>
+          A list of all "are we yet" project sites is kept at
+          <a href="https://wiki.mozilla.org/Areweyet">wiki.mozilla.org/Areweyet</a>
+        </li>
       </ul>
     </p>
-    <hr />
   </div>
 </body>
 </html>

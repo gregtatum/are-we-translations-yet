@@ -44,12 +44,6 @@ html.embed a:visited {
   justify-self: stretch;
 }
 
-#links {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-
 #grid {
   display: grid;
   grid-template-rows: auto 1fr;
