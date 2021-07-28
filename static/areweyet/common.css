@@ -139,6 +139,7 @@ h1 {
   width: 50%;
   max-width: 800px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .iframe-container > div {
@@ -406,4 +407,11 @@ h1 {
 .arewe-update-warn {
   color: #735c0f;
   background-color: #fff3dd;
+}
+
+.fluent-iframe {
+  left: -60px !important;
+  top: -115px !important;
+  width: calc(100% + 180px) !important;
+  height: calc(100% + 91px) !important;
 }
