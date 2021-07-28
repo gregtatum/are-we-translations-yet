@@ -409,6 +409,9 @@ h1 {
   background-color: #fff3dd;
 }
 
+/**
+ * Hack the fluent iframe into place.
+ */
 .fluent-iframe {
   left: -60px !important;
   top: -115px !important;
