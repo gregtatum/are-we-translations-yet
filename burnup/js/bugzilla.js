@@ -146,7 +146,10 @@
                 callback(error, null);
             } else {
                 const bugs = _.map(response.bugs, materializeBug);
-                callback(null, bugs);
+                // TODO - Remove me for other projects. This filters out some bugs I didn't want in the chart.
+                callback(null, bugs.filter(bug => {
+                    return bug.id !== 1009501 && bug.id !== 1605609
+                }));
             }
         });
     }

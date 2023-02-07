@@ -2,129 +2,36 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Are We Unified Intl Yet?</title>
+    <title>Are We Translations Yet?</title>
     <link href='static/page.css' rel='stylesheet' type='text/css'>
     <script src='static/areweyet/chart.js'></script>
 </head>
 <body>
-  <h1>Are We Unified Intl Yet?</h1>
+  <h1>Are We Translations Yet?</h1>
 
   <div class="milestones">
     <div class="desc-box-outer">
       <div class="desc-box">
-        <h2>All work for mozilla::intl</h2>
+        <h2>Translations</h2>
         <p>
-          The unicode components are used in a variety of ways across all of the browser.
-          Unifying them will make the internationalization experience in Firefox consistent,
-          mitigate risks for maintaining new web APIs, and allow for experimentation with
-          next generation internationalization tools.
+          This chart tracks the translations work in
+          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=971044">Bug 971044</a>
+          Anything P1-P3 are shown in this chart. To remove a bug from the chart mark
+          it as P4 or lower.
         </p>
         <p>
-          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1686965">Metabug</a>
+
         </p>
       </div>
     </div>
 
     <div style="width: 70%" class="iframe-container">
       <div>
-        <!-- <iframe src="./burnup/?f1=blocked&o1=anywords&v1=1686965"></iframe> -->
-        <iframe src="./burnup/?blocks=1686965&priority=P1&priority=P2&priority=P3"></iframe>
+          <iframe src="./burnup/?blocks=971044&priority=P1&priority=P2&priority=P3"></iframe>
+          <!-- <iframe src="./burnup/?f1=blocked&o1=anywords&v1=971044"></iframe> -->
       </div>
     </div>
   </div>
-
-  <div class="milestones">
-    <div class="desc-box-outer">
-      <div class="desc-box">
-        <h2>Unifying Gecko</h2>
-        <p>
-          In order to lower the maintenance burden, we should ensure all calls to ICU
-          are routed through mozilla::intl. This chart tracks that unification. This
-          does not include SpiderMonkey work.
-        </p>
-        <p>
-          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1719664">Metabug</a>
-        </p>
-      </div>
-    </div>
-
-    <div style="width: 70%" class="iframe-container">
-      <div>
-        <iframe src="./burnup/?blocks=1719664&priority=P1&priority=P2&priority=P3"></iframe>
-        <!-- <iframe src="./burnup/?f1=blocked&o1=anywords&v1=1719664"></iframe> -->
-      </div>
-    </div>
-  </div>
-
-  <div class="milestones">
-    <div class="desc-box-outer">
-      <div class="desc-box">
-        <h2>Unifying SpiderMonkey</h2>
-        <p>
-          SpiderMonkey is the most complicated consumer of ICU code, and it has the
-          largest amount of future changes around the Intl API. It's a key part of
-          testing and validating Mozilla's involvement with and validation of
-          <a href="https://github.com/unicode-org/icu4x">ICU4X</a>.
-        </p>
-        <p>
-          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1719672">Metabug</a>
-        </p>
-      </div>
-    </div>
-
-    <div style="width: 70%" class="iframe-container">
-      <div>
-          <iframe src="./burnup/?blocks=1719672&priority=P1&priority=P2&priority=P3"></iframe>
-          <!-- <iframe src="./burnup/?f1=blocked&o1=anywords&v1=1719672"></iframe> -->
-      </div>
-    </div>
-  </div>
-
-  <div class="milestones">
-    <div class="desc-box-outer">
-      <div class="desc-box">
-        <h2>Unifying <code>intl/locale</code></h2>
-        <p>
-          There have been some attempts to unify parts of i18n in Gecko in the past.
-          Consolidate and update these nicely into <code>intl/components</code> to
-          ensure a cohesive unified implementation.
-        </p>
-        <p>
-          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1722542">Metabug</a>
-        </p>
-      </div>
-    </div>
-
-    <div style="width: 70%" class="iframe-container">
-      <div>
-          <iframe src="./burnup/?f1=blocked&o1=anywords&v1=1722542"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div class="milestones">
-    <div class="desc-box-outer">
-      <div class="desc-box">
-        <h2>Remove .dtd files from browser.xhtml</h2>
-        <p>
-          This is a key clean-up that will help enable multilingual Firefox, and remove
-          .dtd from the startup path.
-        </p>
-        <p>
-          <a href="https://www.arewefluentyet.com/list.html?milestone=M1">Files remaining</a>
-        </p>
-      </div>
-    </div>
-
-    <div style="width: 70%" class="iframe-container">
-      <div>
-          <!-- Hack the fluent iframe into place. -->
-          <iframe src="https://www.arewefluentyet.com/?milestone=M1" class='fluent-iframe'></iframe>
-      </div>
-    </div>
-  </div>
-
-
 
   <div class="summary-box">
     <hr />
@@ -133,7 +40,7 @@
       <ul>
         <li>
           The source for this project can be found at
-          <a href="https://github.com/gregtatum/are-we-unified-intl-yet/">github.com/gregtatum/are-we-unified-intl-yet/</a>.
+          <a href="https://github.com/gregtatum/are-we-translations-yet/">github.com/gregtatum/are-we-translations-yet/</a>.
         </li>
         <li>
           This site was forked from

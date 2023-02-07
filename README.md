@@ -1,5 +1,5 @@
-# Are We Unified Intl Yet?
+# Are We Translations Yet?
 
-[Site](https://gregtatum.github.io/are-we-unified-intl-yet/)
+[Site](https://gregtatum.github.io/are-we-translations-yet/)
 
 Project forked from: [bgrins/areweyet](https://github.com/bgrins/areweyet)
