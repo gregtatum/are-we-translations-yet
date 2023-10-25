@@ -28,7 +28,7 @@
     function months(m) { return weeks(4 * m); }
 
     const queryString = window.CHART_QUERY_STRING || getQueryString();
-    const chartStartDate = window.CHART_START_DATE || getChartStartDate();
+    const chartStartDate = getChartStartDate();
 
     function getQueryString() {
         // e.g. "?foo=bar&baz=qux&/"
@@ -44,6 +44,7 @@
       const CHART_START_PERIOD = months(4);
       const searchParams = parseQueryString(queryString);
       return (searchParams && searchParams.since) ||
+             window.CHART_START_DATE ||
              yyyy_mm_dd(new Date(Date.now() - CHART_START_PERIOD));
 
       function parseQueryString(qs) {
