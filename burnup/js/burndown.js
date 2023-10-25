@@ -28,6 +28,7 @@
     function months(m) { return weeks(4 * m); }
 
     const queryString = window.CHART_QUERY_STRING || getQueryString();
+    const searchParams = parseQueryString(queryString);
     const chartStartDate = getChartStartDate();
 
     function getQueryString() {
@@ -40,28 +41,27 @@
         return qs.slice(1, slash);
     }
 
+    function parseQueryString(qs) {
+        // e.g. "foo=bar&baz=qux&"
+        const kvs = {};
+        const params = qs.split("&");
+        for (let kv of params) {
+            kv = kv.split("=", 2);
+            const key = kv[0].toLowerCase();
+            if (key.length === 0) {
+                return; // "&&"
+            }
+            const value = (kv.length > 1) ? decodeURIComponent(kv[1]) : null;
+            kvs[key] = value;
+        }
+        return kvs;
+    }
+
     function getChartStartDate() {
       const CHART_START_PERIOD = months(4);
-      const searchParams = parseQueryString(queryString);
       return (searchParams && searchParams.since) ||
              window.CHART_START_DATE ||
              yyyy_mm_dd(new Date(Date.now() - CHART_START_PERIOD));
-
-      function parseQueryString(qs) {
-          // e.g. "foo=bar&baz=qux&"
-          const kvs = {};
-          const params = qs.split("&");
-          for (let kv of params) {
-              kv = kv.split("=", 2);
-              const key = kv[0].toLowerCase();
-              if (key.length === 0) {
-                  return; // "&&"
-              }
-              const value = (kv.length > 1) ? decodeURIComponent(kv[1]) : null;
-              kvs[key] = value;
-          }
-          return kvs;
-      }
     }
 
     function getElementValue(id) {
@@ -215,12 +215,14 @@
                 closedBugCounts.push(closedBugCount);
             }
 
-            // Extend last bug count to today, so burndown ends on today.
-            const today = yyyy_mm_dd(new Date());
-            if (bugDates.length > 0 && _.last(bugDates) < today) {
-                bugDates.push(today);
-                openBugCounts.push(openBugCount);
-                closedBugCounts.push(closedBugCount);
+            if (searchParams.completed !== "true") {
+                // Extend last bug count to today, so burndown ends on today.
+                const today = yyyy_mm_dd(new Date());
+                if (bugDates.length > 0 && _.last(bugDates) < today) {
+                    bugDates.push(today);
+                    openBugCounts.push(openBugCount);
+                    closedBugCounts.push(closedBugCount);
+                }
             }
 
             drawChart(bugDates, openBugCounts, closedBugCounts);
