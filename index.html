@@ -7,7 +7,7 @@
     <script src='static/areweyet/chart.js'></script>
 </head>
 <body>
-  <h1><b>Are We Translations Yet?</b></h1>
+  <h1 id="are-we-translations-yet"><a class="section-anchor" href="#are-we-translations-yet"><b>Are We Translations Yet?</b></a></h1>
 
   <div class="milestones">
     <div class="desc-box-outer">
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <h1><b>Translations Platforms</b></h1>
+  <h1 id="translations-platforms"><a class="section-anchor" href="#translations-platforms"><b>Translations Platforms</b></a></h1>
 
   <div class="milestones">
     <div class="desc-box-outer">
@@ -74,7 +74,7 @@
     </div>
   </div>
 
-  <h1><b>Ongoing Translations Projects</b></h1>
+  <h1 id="ongoing-translations-projects"><a class="section-anchor" href="#ongoing-translations-projects"><b>Ongoing Translations Projects</b></a></h1>
 
 
   <div class="milestones">
@@ -95,7 +95,7 @@
     </div>
   </div>
 
-  <h1><b>Completed Translations Projects</b></h1>
+  <h1 id="completed-translations-projects"><a class="section-anchor" href="#completed-translations-projects"><b>Completed Translations Projects</b></a></h1>
 
   <div class="milestones">
     <div class="desc-box-outer">
@@ -197,6 +197,14 @@
     // The open-in-place functionality is awkward and broken.
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('a').forEach(link => {
+        const href = link.getAttribute('href') || '';
+        const isHashLink = href.startsWith('#');
+
+        // Leave same-page anchor links alone so they update the hash and scroll in place.
+        if (isHashLink) {
+          return;
+        }
+
         if (!link.target) {
           link.target = '_blank';
         }

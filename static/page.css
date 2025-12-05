@@ -31,6 +31,15 @@ html.embed a:visited {
   color: var(--blue-40);
 }
 
+.section-anchor {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-anchor:hover {
+  text-decoration: underline;
+}
+
 #footer {
   display: flex;
   flex-direction: row;
