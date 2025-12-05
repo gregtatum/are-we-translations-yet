@@ -192,5 +192,24 @@
     </p>
   </div>
 
+  <script>
+    // Ensure that hyperlinks open in a new tab by default.
+    // The open-in-place functionality is awkward and broken.
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a').forEach(link => {
+        if (!link.target) {
+          link.target = '_blank';
+        }
+        const rel = (link.rel || '').split(/\s+/).filter(Boolean);
+        if (!rel.includes('noopener')) {
+          rel.push('noopener');
+        }
+        if (!rel.includes('noreferrer')) {
+          rel.push('noreferrer');
+        }
+        link.rel = rel.join(' ');
+      });
+    });
+  </script>
 </body>
 </html>

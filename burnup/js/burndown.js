@@ -119,9 +119,28 @@
         return element;
     }
 
+    /**
+     * Ensure that hyperlinks open in a new tab by default.
+     * The open-in-place functionality is awkward and broken.
+     */
+    function applyLinkDefaults(link) {
+        if (!link.target) {
+            link.setAttribute("target", "_blank");
+        }
+        const rel = (link.getAttribute("rel") || "").split(/\s+/).filter(Boolean);
+        if (!rel.includes("noopener")) {
+            rel.push("noopener");
+        }
+        if (!rel.includes("noreferrer")) {
+            rel.push("noreferrer");
+        }
+        link.setAttribute("rel", rel.join(" "));
+    }
+
     function createLink(text, url) {
         const element = createElement("a", text);
         element.setAttribute("href", url);
+        applyLinkDefaults(element);
         return element;
     }
 
