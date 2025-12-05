@@ -72,7 +72,38 @@
         return date.toISOString().slice(0,10);
     }
 
+    function buildTickValues(bugDates) {
+        if (!bugDates.length) {
+            return undefined;
+        }
+
+        const startDate = new Date(bugDates[0]);
+        const endDate = new Date(_.last(bugDates));
+        if (startDate.getTime() === endDate.getTime()) {
+            return [bugDates[0]];
+        }
+
+        const spanMs = endDate.getTime() - startDate.getTime();
+        const pointAt = (fraction) => {
+            const date = new Date(startDate.getTime() + spanMs * fraction);
+            return yyyy_mm_dd(date);
+        };
+
+        // Start, quartiles, middle, end to avoid overlapping labels.
+        const ticks = [
+            yyyy_mm_dd(startDate),
+            pointAt(0.25),
+            pointAt(0.5),
+            pointAt(0.75),
+            yyyy_mm_dd(endDate),
+        ];
+
+        // Deduplicate while preserving order.
+        return ticks.filter((value, index, self) => self.indexOf(value) === index);
+    }
+
     function drawChart(bugDates, openBugCounts, closedBugCounts) {
+        const tickValues = buildTickValues(bugDates);
         c3.generate({
             data: {
                 xs: {
@@ -102,8 +133,20 @@
             axis: {
                 x: {
                     type: "timeseries",
-                    tick: {format: "%Y-%m-%d"},
+                    // Add a little breathing room so the last label doesn't clip.
+                    padding: {
+                        left: 0,
+                        right: days(10),
+                    },
+                    tick: {
+                        format: "%Y-%m-%d",
+                        values: tickValues,
+                    },
                 }
+            },
+            // Extra space on the right so the final tick label renders fully.
+            padding: {
+                right: 16,
             },
         });
     }
